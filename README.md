@@ -47,7 +47,7 @@
   }
   ```
 
-### Listando Projetos
+### Listando Projeto
 
 - Metodo: `GET`
 - URL: http://localhost:3333/projects/:id
