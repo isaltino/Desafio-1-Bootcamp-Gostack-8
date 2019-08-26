@@ -23,7 +23,7 @@
   }
   ```
 
-  ### Editando Projeto
+### Editando Projeto
 
 - Metodo: `PUT`
 - URL: http://localhost:3333/projects/:id
@@ -35,7 +35,7 @@
   }
   ```
 
-  ### Criando Tarefas
+### Criando Tarefas
 
 - Metodo: `POST`
 - URL: http://localhost:3333/projects/:id/tasks
@@ -47,13 +47,13 @@
   }
   ```
 
-  ### Listando Projetos
+### Listando Projetos
 
 - Metodo: `GET`
 - URL: http://localhost:3333/projects/:id
 - Parâmetro: params URL
 
-  ### Listando todos os Projetos
+### Listando todos os Projetos
 
 - Metodo: `GET`
 - URL: http://localhost:3333/projects
