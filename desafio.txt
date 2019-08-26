@@ -1,0 +1,79 @@
+Desafio 01. Conceitos do NodeJS
+Crie uma aplicação do zero utilizando Express.
+
+Essa aplicação será utilizada para armazenar projetos e suas tarefas.
+
+Rotas
+POST /projects: A rota deve receber id e title dentro corpo de cadastrar um novo projeto dentro de um array no seguinte formato: { id: "1", title: 'Novo projeto', tasks: [] }; Certifique-se de enviar tanto o ID quanto o título do projeto no formato string com àspas duplas.
+
+GET /projects: Rota que lista todos projetos e suas tarefas;
+
+PUT /projects/:id: A rota deve alterar apenas o título do projeto com o id presente nos parâmetros da rota;
+
+DELETE /projects/:id: A rota deve deletar o projeto com o id presente nos parâmetros da rota;
+
+POST /projects/:id/tasks: A rota deve receber um campo title e armazenar uma nova tarefa no array de tarefas de um projeto específico escolhido através do id presente nos parâmetros da rota;
+
+Exemplo
+Se eu chamar a rota POST /projects repassando { id: 1, title: 'Novo projeto' } e a rota POST /projects/1/tasks com { title: 'Nova tarefa' }, meu array de projetos deve ficar assim:
+
+[
+  {
+    id: "1",
+    title: 'Novo projeto',
+    tasks: ['Nova tarefa']
+  }
+]
+Middlewares
+Crie um middleware que será utilizado em todas rotas que recebem o ID do projeto nos parâmetros da URL que verifica se o projeto com aquele ID existe. Se não existir retorne um erro, caso contrário permita a requisição continuar normalmente;
+
+Crie um middleware global chamado em todas requisições que imprime (console.log) uma contagem de quantas requisições foram feitas na aplicação até então;
+
+Entrega
+Esse desafio não precisa ser entregue e não receberá correção, mas você pode ver o resultado do código do desafio aqui: https://github.com/Rocketseat/bootcamp-gostack-desafio-01
+
+Após concluir o desafio, adicionar esse código ao seu Github é uma boa forma de demonstrar seus conhecimentos para oportunidades futuras.
+
+“Sua única limitação é você mesmo”!
+
+
+:point_right:  Boa noite pessoal. Eu tenho uma duvida, acho que é bem superficial, mas não consegui encontrar resposta ainda. Eu estou fazendo o desafio do primeiro módulo e apesar de estar tudo funcionando acabei percebendo uma coisa que acontece, mas que eu não seu como é feito. Gostaria de entender o processo:  
+
+Eu montei essa rota:
+
+server.post("/projects", (req, res) => {
+  const { id, title } = req.body;
+
+  const item = { id, title, tesk: [] };
+
+  projects.push(item);
+
+  return res.json(projects);
+});
+
+Ela é simples; pega os parâmetros passados no body, agrupa em uma única variável (item) em seguida incrementa na variável projects junto com os demais valores através do push, por fim retorna o res em json. 
+Tudo funcionando bonitinho. 
+No insomna eu teho o retorno em json:
+
+
+
+[
+  {
+    "id": "1",
+    "title": "teste",
+    "tesk": []
+  }
+]
+
+E minhas entrada no body foi:
+
+{
+	"id" : "3",
+	"title" : "teste 3"
+}
+
+A pergunta é: Como ou onde ele entendeu que o índice do primeiro e segundo valor deveria se chamar ID e tile respectivamente?
+Eu criei um objeto com índices inexistentes: const item = { id, title, tesk: [] };
+Quando deveria ser: const item = { id:id, title:title, tesk: [] };
+
+Conseguiram compreender?
